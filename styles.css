@@ -24,5 +24,10 @@ h1 {
 
 button {
     background-color:darkgray;
+    color: rgb(55, 53, 53);
+    border: none;
+    padding: 10px 10px;
+    border-radius: 8px;
+    font-size: large;
     
 }
