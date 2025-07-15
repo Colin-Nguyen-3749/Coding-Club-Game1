@@ -6,7 +6,8 @@ const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
 const score = 0;
 
-button.addEventListener('click', startGame);
+button.addEventListener('keydown', startGame);
+
 
 function startGame() {
     const randomLetter = letters[Math.floor(Math.random() * letters.length)];
