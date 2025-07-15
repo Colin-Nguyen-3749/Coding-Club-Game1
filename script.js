@@ -1,21 +1,22 @@
 console.log('JavaScript file is linked correctly.');
 
 const button = document.getElementById('presser');
-
 const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-
 let score = 0;
 
-button.addEventListener('keydown', startGame);
+let currentLetter = letters[Math.floor(Math.random() * letters.length)];
+button.textContent = currentLetter;
 
-function startGame(event) {
-    const randomLetter = letters[Math.floor(Math.random() * letters.length)];
-    button.textContent = randomLetter;
-    console.log(randomLetter);
+button.addEventListener('keydown', playGame);
+
+function playGame(event) {
     const keyPressed = event.key;
-    if (keyPressed.toUpperCase() === randomLetter.toUpperCase()) {
+    if (keyPressed.toUpperCase() === currentLetter.toUpperCase()) {
         score++;
+        console.log(`Correct! Score: ${score}`);
+    } else {
+        console.log(`Wrong! Score: ${score}`);
     }
-    console.log(`Score: ${score}`);
+    currentLetter = letters[Math.floor(Math.random() * letters.length)];
+    button.textContent = currentLetter;
 };
-
