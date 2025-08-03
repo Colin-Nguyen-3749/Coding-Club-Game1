@@ -22,7 +22,7 @@ h1 {
     margin-bottom: 0;
 }
 
-button {
+#button {
     background-color:darkgray;
     color: rgb(55, 53, 53);
     border: none;
@@ -38,11 +38,11 @@ button {
     box-shadow: 0 9px #999;
 }
 
-.correct {
+#button.correct {
     background-color: #38cb82;
 }
 
-.wrong {
+#button.wrong {
     background-color: #ff5252
 }
 
