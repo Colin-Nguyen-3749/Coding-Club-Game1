@@ -59,8 +59,9 @@ function displayGameOver() {
     console.log('eureka');
     gameOver.style.display = 'block';
     restartButton.addEventListener('click', restartGame);
-    if (playerScorecore > highestScore) { 
-        highestScore = playerScore;
+    if (score > highestScore) { 
+        console.log('eureka');
+        highestScore = score;
         highScore.textContent = highestScore;
     }
 }
@@ -70,6 +71,7 @@ function restartGame() {
     gameOver.style.display = 'none';
 
     score = 0;
+    playerScore.textContent = score;
     gameEnd = false;
     playGame();
     let currentLetter = letters[Math.floor(Math.random() * letters.length)];
