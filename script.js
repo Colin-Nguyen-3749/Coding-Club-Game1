@@ -8,10 +8,13 @@ const gameOver = document.getElementById('game-over');
 const playerScore = document.getElementById('score');
 const highScore = document.getElementById('high-score');
 const restartButton = document.getElementById('restart-button');
+const timer = document.getElementById('game-timer');
 
 let score = 0;
 let gameEnd = false; 
 let highestScore = 0;
+
+let timeLeft = 12; //12 seconds
 
 
 let currentLetter = letters[Math.floor(Math.random() * letters.length)];
@@ -19,7 +22,22 @@ button.textContent = currentLetter;
 
 button.addEventListener('keydown', playGame);
 
+function updateTimer() {
+    timer.textContent = `${timeLeft}s`;
+    if (timeLeft <= 0) {
+        clearInterval(timerInterval);
+        displayGameOver();
+    } else {
+        timeLeft--;
+    }
+
+}
+
+const timerInterval = setInterval(updateTimer, 1000);
+
 function playGame(event) {
+
+    updateTimer();
     highScore.textContent = highestScore;
     const keyPressed = event.key;
     
@@ -70,6 +88,9 @@ function restartGame() {
     const gameOver = document.getElementById('game-over');
     gameOver.style.display = 'none';
 
+    timeLeft = 12;
+    timer.textContent = `${timeLeft}s`;
+    const timerInterval = setInterval(updateTimer, 1000);
     score = 0;
     playerScore.textContent = score;
     gameEnd = false;
