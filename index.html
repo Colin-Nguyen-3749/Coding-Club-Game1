@@ -14,14 +14,19 @@
     <body>
         <main class="container">
             <h1>PRESS THAT BUTTON!</h1>
-            <button id="button">Press Space to Start</button>
+            <button id="button">Click to Start</button>
+            <p>Your score: <span id="score"></span></p>
+            <p>High score: <span id="high-score"></span></p>
             <style>
                 button{
                     transition: background-color 0.5s ease;
                 }
             </style>
         </main>
-        
+        <div id="game-over" style="display: none;">
+            <h1>That's Game!</h1>
+            <button id="restart-button">Play Again?</button>
+        </div>
         <script src="script.js"></script>
     </body>
 
