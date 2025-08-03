@@ -71,3 +71,19 @@ h1 {
     line-height: 1.5;
 }
 
+#restart-button {
+    background-color:darkgray;
+    color: rgb(55, 53, 53);
+    border: none;
+    padding: 10px 10px;
+    border-radius: 8px;
+    font-size: medium;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 200px;
+    height:50px;
+    font-size: 32px;
+    transition: background-color 0.2s ease-in-out;
+    box-shadow: 0 9px #999;
+}
+
