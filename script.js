@@ -15,7 +15,7 @@ let score = 0;
 let gameEnd = false; 
 let highestScore = 0;
 
-let timeLeft = 12; //12 seconds
+let timeLeft = 20; //12 seconds
 
 
 let currentLetter = letters[Math.floor(Math.random() * letters.length)];
@@ -72,7 +72,14 @@ function playGame(event) {
     
 };
 
+function stopTimer() {
+    clearInterval(timer);
+    console.log("eureka")
+}
+
 function displayGameOver() {
+    
+    stopTimer();
     console.log('eureka');
     button.disabled = true;
     gameOver.style.display = 'block';
@@ -89,7 +96,7 @@ function restartGame() {
     gameOver.style.display = 'none';
 
     button.disabled = false;
-    timeLeft = 12;
+    timeLeft = 20;
     timer.textContent = `${timeLeft}s`;
     score = 0;
     playerScore.textContent = score;
