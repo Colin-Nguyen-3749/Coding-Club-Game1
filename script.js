@@ -27,7 +27,7 @@ button.addEventListener('keydown', playGame);
 function updateTimer() {
     timer.textContent = `${timeLeft}s`;
     if (timeLeft <= 0) {
-        clearInterval(timerInterval);
+        //clearTimeout(timerInterval);
         displayGameOver();
     } else {
         timeLeft--;
@@ -67,23 +67,25 @@ function playGame(event) {
 
     document.addEventListener('keyup', (e) => {
         button.classList.remove('clicked');
+    
 
     });
     
 };
 
 function stopTimer() {
-    clearInterval(timer);
+    clearTimeout(timer);
     console.log("eureka")
 }
 
 function displayGameOver() {
     
+
+    restartButton.addEventListener('click', restartGame);
     stopTimer();
-    console.log('eureka');
+    console.log('game over');
     button.disabled = true;
     gameOver.style.display = 'block';
-    restartButton.addEventListener('click', restartGame);
     if (score > highestScore) { 
         console.log('eureka');
         highestScore = score;
@@ -92,6 +94,7 @@ function displayGameOver() {
 };
 
 function restartGame() {
+
     const gameOver = document.getElementById('game-over');
     gameOver.style.display = 'none';
 
@@ -103,7 +106,7 @@ function restartGame() {
     gameEnd = false;
     playGame();
     let currentLetter = letters[Math.floor(Math.random() * letters.length)];
-    button.textContent = currentLetter;
-    
+    button.textContent = currentLetter; 
+    console.log('game restarted');
 };
 
