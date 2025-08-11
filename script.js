@@ -16,7 +16,7 @@ let score = 0;
 let gameEnd = false; 
 let highestScore = 0;
 
-let timeLeft = 20; //12 seconds
+let timeLeft = 20; 
 
 
 let currentLetter = letters[Math.floor(Math.random() * letters.length)];
