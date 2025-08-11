@@ -10,6 +10,7 @@ const highScore = document.getElementById('high-score');
 const restartButton = document.getElementById('restart-button');
 const timer = document.getElementById('game-timer');
 const timerInterval = setInterval(updateTimer, 1000);
+const messageOne = document.getElementById('messageOne');
 
 let score = 0;
 let gameEnd = false; 
@@ -36,6 +37,7 @@ function updateTimer() {
 
 function playGame(event) {
 
+    messageOne.textContent = '';
     highScore.textContent = highestScore;
     const keyPressed = event.key;
     
