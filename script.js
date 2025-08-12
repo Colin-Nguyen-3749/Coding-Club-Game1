@@ -9,20 +9,43 @@ const playerScore = document.getElementById('score');
 const highScore = document.getElementById('high-score');
 const restartButton = document.getElementById('restart-button');
 const timer = document.getElementById('game-timer');
-const timerInterval = setInterval(updateTimer, 1000);
 const messageOne = document.getElementById('messageOne');
 
 let score = 0;
 let gameEnd = false; 
 let highestScore = 0;
+let gameStarted = false;
 
 let timeLeft = 20; 
 
 
 let currentLetter = letters[Math.floor(Math.random() * letters.length)];
-button.textContent = currentLetter;
 
-button.addEventListener('keydown', playGame);
+document.addEventListener('keydown', function(event) {
+    if (!gameStarted && event.code === 'Space') {
+        startGame();
+    }
+});
+
+function startGame() {
+    gameStarted = true;
+    button.disabled = false;
+    timeLeft = 20;
+    timer.textContent = `${timeLeft}s`;
+    score = 0;
+    playerScore.textContent = score;
+    gameEnd = false;
+    gameOver.style.display = 'none';
+    currentLetter = letters[Math.floor(Math.random() * letters.length)];
+    button.textContent = currentLetter;
+    highScore.textContent = highestScore;
+    messageOne.textContent = '';
+    timerIntervalId = setInterval(updateTimer, 1000);
+    button.focus();
+
+}
+
+let timerIntervalId;
 
 
 function updateTimer() {
@@ -34,6 +57,13 @@ function updateTimer() {
         timeLeft--;
     }
 };
+
+button.addEventListener('keydown', function(event) {
+    if (gameStarted && !gameEnd) {
+        playGame(event);
+    }
+
+});
 
 function playGame(event) {
 
@@ -76,7 +106,7 @@ function playGame(event) {
 };
 
 function stopTimer() {
-    clearTimeout(timer);
+    clearTimeout(timerIntervalId);
     console.log("eureka")
 }
 
@@ -85,6 +115,7 @@ function displayGameOver() {
 
     restartButton.addEventListener('click', restartGame);
     stopTimer();
+    gameStarted = false;
     console.log('game over');
     button.disabled = true;
     gameOver.style.display = 'block';
@@ -100,15 +131,15 @@ function restartGame() {
     const gameOver = document.getElementById('game-over');
     gameOver.style.display = 'none';
 
-    button.disabled = false;
+    button.disabled = true;
     timeLeft = 20;
     timer.textContent = `${timeLeft}s`;
     score = 0;
     playerScore.textContent = score;
     gameEnd = false;
-    playGame();
-    let currentLetter = letters[Math.floor(Math.random() * letters.length)];
-    button.textContent = currentLetter; 
+    gameStarted = false;
+    messageOne.textContent = 'Press Spacebar to Start';
+    button.textContent = ''; 
     console.log('game restarted');
-};
+}
 
